@@ -105,10 +105,17 @@ public class JobController {
     // Sort jobs by location
     @GetMapping("/sortbylocation")
     public List<Job> sortJobByLocation() {
-        return jobList.stream().sorted(Comparator.comparing(Job::getLocation)).collect(Collectors.toList());
+        // Cách 1: dùng lambda
+        List<Job> result = new ArrayList<>(jobList);
+        result.sort((j1, j2) -> j1.getLocation().compareTo(j2.getLocation()));
+        return result;
 
-        // jobList.sort(Comparator.comparing(Job::getLocation));
-        // return jobList;
+        // Cách 2: dùng method reference
+        // result.sort(Comparator.comparing(Job::getLocation));
+        // return result;
+
+        // Cách 3: dùng stream()
+        // return jobList.stream().sorted(Comparator.comparing(Job::getLocation)).collect(Collectors.toList());
     }
 
     // Find job by salary
@@ -128,7 +135,6 @@ public class JobController {
                         || job.getDescription().toLowerCase().contains(
                                 keyLowerCase)))
                 .collect(Collectors.toList());
-
     }
 
     // Find job by location and keyword
