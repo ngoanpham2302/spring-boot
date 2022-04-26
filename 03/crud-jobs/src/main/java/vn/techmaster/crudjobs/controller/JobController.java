@@ -45,13 +45,13 @@ public class JobController {
                 "lmn@gmail.com"));
     }
 
-    // Get all jobs
+    // 01. Get all jobs
     @GetMapping
     public List<Job> getAllJobs() {
         return jobList;
     }
 
-    // Get job by id
+    // 02. Get job by id
     @GetMapping("/{id}")
     public Job getJobById(@PathVariable("id") String id) {
         for (Job job : jobList) {
@@ -62,7 +62,7 @@ public class JobController {
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Job Not Found");
     }
 
-    // Create new job
+    // 03. Create new job
     @PostMapping
     public ResponseEntity<Job> createNewJob(@RequestBody JobRequest jobRequest) {
         String uuid = UUID.randomUUID().toString();
@@ -73,7 +73,7 @@ public class JobController {
         return ResponseEntity.status(HttpStatus.CREATED).body(newJob);
     }
 
-    // Update job by id
+    // 04. Update job by id
     @PutMapping("/{id}")
     public Job updateJobById(@PathVariable("id") String id, @RequestBody JobRequest jobRequest) {
         for (Job job : jobList) {
@@ -90,7 +90,7 @@ public class JobController {
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Job Not Found");
     }
 
-    // Delete job
+    // 05. Delete job
     @DeleteMapping("/{id}")
     public Job deleteJob(@PathVariable("id") String id) {
         for (Job job : jobList) {
@@ -102,7 +102,7 @@ public class JobController {
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Job Not Found");
     }
 
-    // Sort jobs by location
+    // 06. Sort jobs by location
     @GetMapping("/sortbylocation")
     public List<Job> sortJobByLocation() {
         // Cách 1: dùng lambda
@@ -118,14 +118,14 @@ public class JobController {
         // return jobList.stream().sorted(Comparator.comparing(Job::getLocation)).collect(Collectors.toList());
     }
 
-    // Find job by salary
+    // 07. Find job by salary
     @GetMapping("/salary/{salary}")
     public List<Job> findJobBySalary(@PathVariable("salary") int salary) {
         return jobList.stream().filter(job -> (job.getMin_salary() <= salary && job.getMax_salary() >= salary))
                 .collect(Collectors.toList());
     }
 
-    // Find job by keyword (title or description)
+    // 08. Find job by keyword (title or description)
     @GetMapping("/keyword/{keyword}")
     public List<Job> findJobByKeyword(@PathVariable("keyword") String keyword) {
         String keyLowerCase = keyword.toLowerCase();
@@ -137,7 +137,7 @@ public class JobController {
                 .collect(Collectors.toList());
     }
 
-    // Find job by location and keyword
+    // 09. Find job by location and keyword
     @GetMapping("/query")
     public List<Job> findJobByLocationAndKeyword(@RequestParam("location") Location location,
             @RequestParam("keyword") String keyword) {

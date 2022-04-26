@@ -1,5 +1,5 @@
 package vn.techmaster.crudjobs.model;
 
 public enum Location {
-    HA_NOI, HAI_PHONG, DA_NANG, HO_CHI_MINH
+    DA_NANG, HAI_PHONG, HA_NOI, HO_CHI_MINH
 }
