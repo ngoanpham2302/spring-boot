@@ -7,6 +7,7 @@
 
 2. Tại sao phải đảo ngược tên miền trong `<groupId>vn.techmaster</groupId>`?
 
+- Tạo quy tắc (convention) đặt tên theo quy mô từ lớn đến nhỏ
 - Đảo ngược tên miền để phân biệt công ty, tổ chức sở hữu dự án, xác định dự án là duy nhất, tránh nhầm lẫn với các dự án khác.
 
 ---
@@ -56,7 +57,7 @@ public @interface Controller {
 
 7. Ý nghĩa của `@RequestMapping` là gì? Nó có những tham số gì ngoài `value`?
 
-- `@RequestMapping`: là annotation dùng để ánh xạ các request từ web tới các phương thức xử lý của Spring Controller
+- `@RequestMapping` - `@Target(value={TYPE,METHOD})`: là annotation có target là method, type, dùng để ánh xạ các request từ web tới các method, class xử lý request của Spring Controller
 - Các tham số khác ngoài `value`: `produces`, `consumes`, `headers`, `method`, `params`, `name`, `path`
 
 ---
@@ -110,6 +111,11 @@ public Message echoMessage(@RequestBody Message message){
 
 14. Cổng mặc định ứng dụng SpringBoot là 8080. Hãy google cách để thay đổi cổng lắng nghe mặc định
 
-- VD: Thay đổi thành cổng 8090. Có 2 cách:
-  - Cách 1: Cấu hình trong file `application.properties` nằm trong folder resources: `server.port = 8090`
-  - Cách 2: Sửa đổi VM options: vào Run -> Configuration -> VM Options. Chỉnh sửa VM Options thành `-Dserver.port=8090`
+- VD: Thay đổi thành cổng 8090. Có 3 cách:
+  - Cách 1: Cấu hình trong file `application.properties` nằm trong folder `/src/main/resources/` như sau: `server.port=8090`
+  - Cách 2: Cấu hình trong file `application.yml` nằm trong folder `/src/main/resources/`như sau:
+    ```yml
+    server:
+      port: 8090
+    ```
+  - Cách 3: Sửa đổi VM options: vào Run -> Edit Configuration -> VM Options. Chỉnh sửa VM Options thành `-Dserver.port=8090`
