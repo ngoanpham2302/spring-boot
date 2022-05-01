@@ -8,13 +8,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import vn.techmaster.labdidemo.bean.Car;
 
 @Controller
+@ResponseBody
 public class HomeController {
     @Autowired
     Car myCar;
 
-    @ResponseBody
-    @GetMapping(value="/", produces = MediaType.TEXT_HTML_VALUE)
+    @GetMapping(value = "/", produces = MediaType.TEXT_HTML_VALUE)
     public String getHome() {
         return myCar.toString();
+    }
+
+    @GetMapping(value = "/route", produces = MediaType.TEXT_HTML_VALUE)
+    public String getRoute() {
+        return myCar.navigate();
     }
 }
