@@ -14,10 +14,10 @@ public class CarConfig {
     @Autowired
     ApplicationContext context;
 
-//    @Value("${engineType}")
+//    @Value("#{${engineTypeMap}.keyE}")
 //    private String engineType;
 
-    @Value("#{${engineTypeMap}.keyE}")
+    @Value("${engineType}")
     private String engineType;
 
     @Bean
