@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="template.html :: header('Home')"></head>
+
+<body>
+    <div class="container">
+        <div class="row mt-5 text-center">
+            <div class="employer mt-4 text-success">
+                <h2>Nhà tuyển dụng</h2>
+                <a th:href="@{/add-employer}">Thêm nhà tuyển dụng</a><br>
+                <a th:href="@{/employers}">Danh sách nhà tuyển dụng</a><br>
+            </div>
+
+            <div class="job mt-4 text-success">
+                <h2>Việc làm</h2>
+                <a th:href="@{/add-job}">Tạo việc làm</a><br>
+                <a th:href="@{/jobs}">Danh sách việc làm</a><br>
+            </div>
+
+            <div class="applicant mt-4 text-success">
+                <h2>Nhà tuyển dụng</h2>
+                <a th:href="@{/add-applicant}">Thêm ứng viên</a><br>
+                <a th:href="@{/applicants}">Danh sách ứng viên</a><br>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

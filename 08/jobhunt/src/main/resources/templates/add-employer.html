@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="template.html :: header('Add Employer')"></head>
+
+<body>
+<div class="container">
+    <div th:replace="template.html :: backHome"></div>
+    <h2 th:replace="template.html :: pageHeader('Thêm nhà tuyển dụng')"></h2>
+
+    <div class="row mt-5 justify-content-center text-center">
+        <div class="col-md-6 ">
+            <form action="#" th:action="@{/add-employer}" th:object="${employerRequest}" method="post">
+                <input type="text" class="form-control mb-3" placeholder="Tên" th:field="*{name}"/>
+                <input type="text" class="form-control mb-3" placeholder="Email" th:field="*{email}"/>
+                <input type="text" class="form-control mb-3" placeholder="Số điện thoại" th:field="*{phone}"/>
+                <input type="text" class="form-control mb-4" placeholder="Địa điểm" th:field="*{location}"/>
+                <button class="btn btn-success" type="submit">Thêm mới</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
