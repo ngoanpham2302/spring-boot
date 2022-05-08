@@ -1,37 +1,45 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html
+  lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+>
+  <head th:replace="template.html :: header('Employers')"></head>
 
-<head th:replace="template.html :: header('Employers')"></head>
+  <body>
+    <div class="container">
+      <div th:replace="template.html :: backHome"></div>
+      <h2
+        th:replace="template.html :: pageHeader('Danh sách nhà tuyển dụng')"
+      ></h2>
 
-<body>
-<div class="container">
-    <div th:replace="template.html :: backHome"></div>
-    <h2 th:replace="template.html :: pageHeader('Danh sách nhà tuyển dụng')"></h2>
+      <div
+        class="text-success my-3 text-center"
+        th:if="${empRequest}"
+        th:text="${successMessage}"
+      ></div>
 
-    <div class="text-success my-3 text-center" th:if="${empRequest}" th:text="${successMessage}"></div>
-
-    <table class="table table-striped table-hover">
+      <table class="table table-striped table-hover">
         <thead>
-        <tr>
+          <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Phone</th>
             <th scope="col">Location</th>
-        </tr>
+          </tr>
         </thead>
 
         <tbody>
-        <tr th:each="employer, iStat : ${employers}">
+          <tr th:each="employer, iStat : ${employers}">
             <th scope="row" th:text="${iStat.index} + 1"></th>
             <td th:text="${employer.name}"></td>
             <td th:text="${employer.email}"></td>
             <td th:text="${employer.phone}"></td>
             <td th:text="${employer.location}"></td>
-        </tr>
+          </tr>
         </tbody>
-    </table>
-</div>
-</body>
+      </table>
+    </div>
+  </body>
 </html>
