@@ -12,11 +12,33 @@
     <div class="row mt-5 justify-content-center text-center">
         <div class="col-md-6 ">
             <form action="#" th:action="@{/add-employer}" th:object="${employerRequest}" method="post">
-                <input type="text" class="form-control mb-3" placeholder="Tên" th:field="*{name}"/>
-                <input type="text" class="form-control mb-3" placeholder="Email" th:field="*{email}"/>
-                <input type="text" class="form-control mb-3" placeholder="Số điện thoại" th:field="*{phone}"/>
-                <input type="text" class="form-control mb-4" placeholder="Địa điểm" th:field="*{location}"/>
-                <button class="btn btn-success" type="submit">Thêm mới</button>
+                <div class="name-box">
+                    <input type="text" class="form-control" placeholder="Tên" th:field="*{name}"
+                           th:classappend="${#fields.hasErrors('name')} ? is-invalid : ''"/>
+                    <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" th:errorclass="invalid-feedback"></div>
+                </div>
+
+                <div class="email-box">
+                    <input type="text" class="form-control mt-3" placeholder="Email" th:field="*{email}"
+                           th:classappend="${#fields.hasErrors('email')} ? is-invalid : ''"/>
+                    <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" th:errorclass="invalid-feedback"></div>
+
+                </div>
+
+                <div class="phone-box">
+                    <input type="text" class="form-control mt-3" placeholder="Số điện thoại" th:field="*{phone}"
+                           th:classappend="${#fields.hasErrors('phone')} ? is-invalid : ''"/>
+                    <div th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" th:errorclass="invalid-feedback"></div>
+
+                </div>
+
+                <div class="location-box">
+                    <input type="text" class="form-control mt-3" placeholder="Địa điểm" th:field="*{location}"
+                           th:classappend="${#fields.hasErrors('location')} ? is-invalid : ''"/>
+                    <div th:if="${#fields.hasErrors('location')}" th:errors="*{location}" th:errorclass="invalid-feedback"></div>
+                </div>
+
+                <button class="btn btn-success mt-4" type="submit">Thêm mới</button>
             </form>
         </div>
     </div>

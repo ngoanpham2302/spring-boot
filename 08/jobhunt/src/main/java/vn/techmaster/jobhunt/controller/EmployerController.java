@@ -7,22 +7,24 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import vn.techmaster.jobhunt.model.Employer;
 import vn.techmaster.jobhunt.repository.EmployerRepository;
 import vn.techmaster.jobhunt.request.EmployerRequest;
+import vn.techmaster.jobhunt.service.EmployerService;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 
 @Controller
 public class EmployerController {
     @Autowired
-    private EmployerRepository employerRepo;
+    private EmployerService employerService;
 
     @GetMapping("/employers")
     public String getEmployerList(Model model) {
-        List<Employer> employerList = employerRepo.getEmployers().values().stream().toList();
-        model.addAttribute("employers", employerList);
+        model.addAttribute("employers", employerService.getEmployerList());
         return "employers";
     }
 
@@ -33,19 +35,14 @@ public class EmployerController {
     }
 
     @PostMapping("/add-employer")
-    public String addNewEmployer(@ModelAttribute EmployerRequest empRequest, BindingResult bindingResult, Model model) {
-        if (!bindingResult.hasErrors()) {
-            Employer employer = new Employer();
-
-            String uuid = UUID.randomUUID().toString();
-            employer.setId(uuid);
-            employer.setName(empRequest.getName());
-            employer.setEmail(empRequest.getEmail());
-            employer.setPhone(empRequest.getPhone());
-            employer.setLocation(empRequest.getLocation());
-
-            employerRepo.getEmployers().put(uuid, employer);
+    public String handleNewEmployerForm(@ModelAttribute @Valid EmployerRequest empRequest, BindingResult bindingResult,
+                                        Model model, RedirectAttributes redirectAttr) {
+        if (bindingResult.hasErrors()) {
+            return "add-employer";
         }
+        employerService.createNewEmployer(empRequest);
+        redirectAttr.addFlashAttribute("successMessage", "Thêm mới thành công!");
+        redirectAttr.addFlashAttribute("empRequest", empRequest);
         return "redirect:/employers";
     }
 }
