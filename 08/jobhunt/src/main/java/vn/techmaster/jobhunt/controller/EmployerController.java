@@ -8,14 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import vn.techmaster.jobhunt.model.Employer;
-import vn.techmaster.jobhunt.repository.EmployerRepository;
 import vn.techmaster.jobhunt.request.EmployerRequest;
 import vn.techmaster.jobhunt.service.EmployerService;
 
 import javax.validation.Valid;
-import java.util.List;
-import java.util.UUID;
 
 @Controller
 public class EmployerController {

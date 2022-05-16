@@ -31,12 +31,12 @@
         </thead>
 
         <tbody>
-          <tr th:each="employer, iStat : ${employers}">
-            <th scope="row" th:text="${iStat.index} + 1"></th>
-            <td th:text="${employer.name}"></td>
-            <td th:text="${employer.email}"></td>
-            <td th:text="${employer.phone}"></td>
-            <td th:text="${employer.location}"></td>
+          <tr th:each="employer, iStat : ${employers}" th:object="${employer}">
+            <th scope="row" th:text="${iStat.count}"></th>
+            <td th:text="*{name}"></td>
+            <td th:text="*{email}"></td>
+            <td th:text="*{phone}"></td>
+            <td th:text="*{location}"></td>
           </tr>
         </tbody>
       </table>
