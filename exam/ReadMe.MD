@@ -137,20 +137,7 @@
 
 14. Giả sử có 1 class `Employee` với các fields sau {id, emailAddress, firstName, lastName}. Hãy viết các method trong interface `EmployeeRespository` để :
 
-- Tìm tất cả các Employee theo emailAddress và lastName
-  @Repository
-  public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
-  public List<Employee> findByEmailAddressAndLastName(String emailAddress, String lastName);
-  }
-- Tìm tất cả các Employee khác nhau theo firstName hoặc lastName
-
-- Tìm tất cả các Employee theo lastName và sắp xếp thứ tự theo firstName tăng dần
-  @Repository
-  public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
-  public List<Employee> findByLastNameOrderByFirstNameAsc(String lastName, String firstName);
-  }
-
-- Tìm tất cả các Employee theo firstName không phân biệt hoa thường
+- Trong source code
 
 ---
 
@@ -191,3 +178,7 @@
   ```java
   Page<Employee> page = employeeRepository.findAll(PageRequest.of(1, 5, Sort.by("firstName").descending()));
   ```
+
+---
+
+18., 19., 20.: Trong source code
