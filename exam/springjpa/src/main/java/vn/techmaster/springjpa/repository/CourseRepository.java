@@ -3,7 +3,9 @@ package vn.techmaster.springjpa.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-public interface CourseRepository extends JpaRepository {
+import vn.techmaster.springjpa.entity.Course;
+
+public interface CourseRepository extends JpaRepository<Course, Integer> {
 
     // Viết Native Query để tính điểm trung bình một môn bất kỳ
 

@@ -22,7 +22,15 @@ public class Category {
 
     private String name;
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "category")
+    @OneToMany(mappedBy = "category")
     private List<Product> products;
+
+    // Khi một Category bị xoá, thì không được phép xoá Product, mà chỉ set thuộc tính Category của Product là null.
+    @PreRemove
+    private void preRemove() {
+        for (Product pro : products) {
+            pro.setCategory(null);
+        }
+    }
 
 }

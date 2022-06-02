@@ -1,15 +1,14 @@
 package vn.techmaster.springjpa.entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 // Câu 19
 
-@Data
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -18,7 +17,6 @@ public class StudentCourse {
     @EmbeddedId
     private StudentCoursePk studentCourseId;
 
-    @Size(min = 0, max = 10)
     private int score;
 
     @ManyToOne
@@ -30,5 +28,25 @@ public class StudentCourse {
     @MapsId("course_id")
     @JoinColumn(name = "course_id")
     private Course course;
+
+    public void setStudentCourseId(StudentCoursePk studentCourseId) {
+        this.studentCourseId = studentCourseId;
+    }
+
+    // Validate: Score must be >= 0 and <= 10
+    public void setScore(int score) {
+        if (score < 0 || score > 10) {
+            throw new IllegalArgumentException("Score can not be smaller than 0 and greater than 10");
+        }
+        this.score = score;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
 
 }
