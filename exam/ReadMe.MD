@@ -1,3 +1,5 @@
+## Câu hỏi lý thuyết Spring JPA:
+
 1. Thuộc tính name trong annotation @Entity khác với thuộc tính name trong @Table như thế
    nào? Hãy giải thích rõ cần thì minh hoạ
 
@@ -15,7 +17,7 @@
 3. Khi sử dụng H2, làm thế nào để xem được cơ sở dữ liệu và viết câu truy vấn?
 
 - Để xem được cơ sở dữ liệu, đầu tiên chúng ta có thể truy cập vào địa chỉ http://localhost:8080/h2-console trên giao diện trình duyệt đang sử dụng.
-- Sau đó login để sử dụng, bằng cách điền đầy đủ thông tin đã cấu hình trong file application.properties như Driver class, JDBC URL, Username, Password.
+- Sau đó login để sử dụng, bằng cách điền đầy đủ thông tin đã cấu hình trong file `application.properties` như Driver class, JDBC URL, Username, Password.
 
 ---
 
@@ -116,9 +118,9 @@
 
 ---
 
-13. . Annotation @GeneratedValue dùng để chọn cách tự sinh unique id cho primary key phải là trường kiểu int hoặc long. Nếu trường primary key có kiểu là String, chúng ta không thể dùng @GeneratedValue vậy hãy thử liệt kê các cách đảm bảo sinh ra chuỗi có tính duy nhất?
+13. . Annotation `@GeneratedValue` dùng để chọn cách tự sinh unique id cho primary key phải là trường kiểu int hoặc long. Nếu trường primary key có kiểu là String, chúng ta không thể dùng @GeneratedValue vậy hãy thử liệt kê các cách đảm bảo sinh ra chuỗi có tính duy nhất?
 
-- Sử dụng `@GeneratedValue` và ` @GenericGenerator`, tự định nghĩa generator, ví dụ:
+- Sử dụng kết hợp `@GeneratedValue` và ` @GenericGenerator`, tự định nghĩa generator, ví dụ:
 
   ```java
   @Id
@@ -135,9 +137,9 @@
 
 ---
 
-14. Giả sử có 1 class `Employee` với các fields sau {id, emailAddress, firstName, lastName}. Hãy viết các method trong interface `EmployeeRespository` để :
+14. Giả sử có 1 class `Employee` với các fields sau {id, emailAddress, firstName, lastName}. Hãy viết các method trong interface `EmployeeRespository` để:
 
-- Trong source code
+- Trong source code (class `Employee` và `Employee Repository`)
 
 ---
 
@@ -182,3 +184,15 @@
 ---
 
 18., 19., 20.: Trong source code
+
+---
+
+---
+
+## Ảnh H2 Database:
+
+1. Database Tables
+
+- ![01-get-all-jobs](./app-img/database-tables.PNG)
+
+---
