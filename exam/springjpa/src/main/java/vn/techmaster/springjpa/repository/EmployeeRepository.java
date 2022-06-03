@@ -12,12 +12,12 @@ import vn.techmaster.springjpa.entity.Employee;
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
     // Tìm tất cả các Employee theo emailAddress và lastName
-    @Query(value = "select * from employee where email_address = ?1 and last_name= ?2", nativeQuery = true)
+    @Query(value = "select * from employee where email_address = ?1 and last_name = ?2", nativeQuery = true)
     List<Employee> findByEmailAndName(String emailAdress, String lastName);
 
     // Tìm tất cả các Employee khác nhau theo firstName hoặc lastName
     @Query(value = "select distinct * from employee where first_name = ?1 or last_name= ?2", nativeQuery = true)
-    List<Employee> findDestinctByEmail(String firstName, String lastName);
+    List<Employee> findDistinctByName(String firstName, String lastName);
 
     // Tìm tất cả các Employee theo lastName và sắp xếp thứ tự theo firstName tăng dần
 
