@@ -9,10 +9,10 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode
 @Embeddable
-public class StudentCoursePk implements Serializable {
+public class StudentCourseId implements Serializable {
     @Column(name = "student_id")
-    private int studentId;
+    private long studentId;
 
     @Column(name = "course_id")
-    private int courseId;
+    private long courseId;
 }

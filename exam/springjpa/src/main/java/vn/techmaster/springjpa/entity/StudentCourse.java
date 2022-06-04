@@ -15,21 +15,21 @@ import lombok.NoArgsConstructor;
 @Table(name = "student_course")
 public class StudentCourse {
     @EmbeddedId
-    private StudentCoursePk studentCourseId;
+    private StudentCourseId studentCourseId;
 
     private int score;
 
     @ManyToOne
-    @MapsId("student_id")
+    @MapsId("studentId")
     @JoinColumn(name = "student_id")
     private Student student;
 
     @ManyToOne
-    @MapsId("course_id")
+    @MapsId("courseId")
     @JoinColumn(name = "course_id")
     private Course course;
 
-    public void setStudentCourseId(StudentCoursePk studentCourseId) {
+    public void setStudentCourseId(StudentCourseId studentCourseId) {
         this.studentCourseId = studentCourseId;
     }
 

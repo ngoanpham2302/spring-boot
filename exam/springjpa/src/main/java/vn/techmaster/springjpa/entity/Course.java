@@ -22,7 +22,7 @@ public class Course {
 
     private String name;
 
-    @OneToMany(mappedBy = "student")
-    private Set<StudentCourse> studentCourses;
+    @OneToMany(mappedBy = "course")
+    private Set<StudentCourse> students;
 
 }
