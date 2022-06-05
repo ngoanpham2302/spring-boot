@@ -15,24 +15,24 @@ import vn.techmaster.springjpa.repository.StudentRepository;
 @Service
 public class StudentServiceImpl implements StudentService {
     @Autowired
-    public StudentRepository studentRepository;
+    private StudentRepository studentRepo;
 
     @Autowired
-    public CourseRepository courseRepository;
+    private CourseRepository courseRepo;
 
     // Trả về liệt kê sinh viên tham gia từng môn học Map<String, List<Student>>:
     // key là tên môn học, value là danh sách sinh viên đăng ký
 
     @Override
-    public Map<String, List<Student>> getStudentByCourse() {
+    public Map<String, List<Student>> getStudentsByCourse() {
         // Lấy danh sách toàn bộ môn học
-        List<Course> courseList = courseRepository.findAll();
+        List<Course> courseList = courseRepo.findAll();
 
         Map<String, List<Student>> courseMap = new HashMap<>();
 
         for (Course course : courseList) {
             String courseName = course.getName();
-            courseMap.put(courseName, studentRepository.getStudentsByCourse(courseName));
+            courseMap.put(courseName, studentRepo.getStudentsByCourse(courseName));
         }
 
         return courseMap;
@@ -41,7 +41,6 @@ public class StudentServiceImpl implements StudentService {
     // Liệt kê danh sách sinh viên học math nhưng không học music
     @Override
     public List<Student> searchByCourse() {
-        return studentRepository.searchByCourse();
+        return studentRepo.searchByCourse();
     }
-
 }

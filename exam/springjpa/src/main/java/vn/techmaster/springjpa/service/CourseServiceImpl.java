@@ -8,13 +8,12 @@ import vn.techmaster.springjpa.repository.CourseRepository;
 @Service
 public class CourseServiceImpl implements CourseService {
     @Autowired
-    public CourseRepository courseRepository;
+    private CourseRepository courseRepo;
 
     // Tính điểm trung bình một môn bất kỳ
 
     @Override
-    public float avgScoreByCourse(String courseName) {
-        return courseRepository.calAverageScoreByCourse(courseName);
+    public double avgScoreByCourse(String courseName) {
+        return courseRepo.calAverageScoreByCourse(courseName);
     }
-
 }

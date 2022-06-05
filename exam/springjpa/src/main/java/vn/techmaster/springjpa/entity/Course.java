@@ -5,12 +5,14 @@ import java.util.Set;
 import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-// Câu 19
+// Câu 19, 20
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "course")
@@ -24,5 +26,4 @@ public class Course {
 
     @OneToMany(mappedBy = "course")
     private Set<StudentCourse> students;
-
 }

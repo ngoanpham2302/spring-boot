@@ -6,7 +6,7 @@ import java.util.Map;
 import vn.techmaster.springjpa.entity.Student;
 
 public interface StudentService {
-    Map<String, List<Student>> getStudentByCourse();
+    Map<String, List<Student>> getStudentsByCourse();
 
     List<Student> searchByCourse();
 }

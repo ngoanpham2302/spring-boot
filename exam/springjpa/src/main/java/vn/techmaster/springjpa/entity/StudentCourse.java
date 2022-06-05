@@ -3,11 +3,13 @@ package vn.techmaster.springjpa.entity;
 import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-// Câu 19
+// Câu 19, 20
 
+@Builder
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -48,5 +50,4 @@ public class StudentCourse {
     public void setCourse(Course course) {
         this.course = course;
     }
-
 }
